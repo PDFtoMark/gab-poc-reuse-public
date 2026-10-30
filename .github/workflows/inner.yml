@@ -1,0 +1,16 @@
+name: inner reusable
+on:
+  workflow_call:
+    secrets:
+      TOKEN:
+        required: false
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: show
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
+        run: |
+          echo "inner ran"
+          echo "token_len=${#TOKEN}"
